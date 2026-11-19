@@ -51,6 +51,9 @@
       .project-card-link:focus-visible { outline:2px solid var(--lime); outline-offset:4px; }
       .project-preview { aspect-ratio:1.35; position:relative; display:grid; place-items:center; background:#191b16; border-bottom:1px solid var(--line); }
       .project-preview::before { content:""; position:absolute; inset:14px; border:1px dashed #3b3f32; }
+      .project-preview-image { background:#595959; }
+      .project-preview-image::before { display:none; }
+      .project-preview-image img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
       .project-number { position:absolute; top:25px; left:26px; color:var(--lime); font:11px var(--mono); }
       .project-plus { width:36px; height:36px; display:grid; place-items:center; border:1px solid #5f654a; border-radius:50%; color:var(--lime); font:22px var(--sans); }
       .project-hint { position:absolute; bottom:24px; color:var(--muted); font:10px var(--mono); letter-spacing:.13em; }
@@ -125,8 +128,8 @@
           <!-- Duplicate a project-card to add more portfolio entries. Replace each placeholder with a project image, title, and description. -->
           <div class="project-grid">
             <a class="project-card project-card-link" href="project-01.html" aria-label="Open project 01 progress log">
-              <div class="project-preview"><span class="project-number">01</span><span class="project-plus" aria-hidden="true">+</span><span class="project-hint">ADD PROJECT IMAGE</span></div>
-              <div class="project-details"><span class="label">PROJECT 01</span><h3>Progress log</h3><p>Open to see the project timeline</p></div>
+              <div class="project-preview project-preview-image"><span class="project-number">01</span><img src="assets/project-01/step01-leg-ik-2026-11-20.png" alt="Maya viewport showing the ailen leg rig" /></div>
+              <div class="project-details"><span class="label">PROJECT 01</span><h3>ailen</h3><p>Character rigging progress in Maya</p></div>
             </a>
             <article class="project-card">
               <div class="project-preview"><span class="project-number">02</span><span class="project-plus" aria-hidden="true">+</span><span class="project-hint">ADD PROJECT IMAGE</span></div>
