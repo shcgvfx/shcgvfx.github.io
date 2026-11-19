@@ -29,12 +29,13 @@
       .timeline-head h2 { margin:0; font-size:13px; font-weight:500; letter-spacing:.13em; text-transform:uppercase; }
       .meta { color:var(--muted); }
       .empty-state { min-height:230px; display:grid; place-items:center; border:1px dashed #3b3f32; color:var(--muted); background:linear-gradient(135deg,#171914,#11120f); text-align:center; padding:30px; font:11px var(--mono); letter-spacing:.12em; }
-      .timeline-list { list-style:none; margin:0; padding:0; display:grid; gap:35px; }
-      .timeline-item { border:1px solid var(--line); background:var(--panel); }
-      .step-heading { padding:20px 23px; color:var(--lime); border-bottom:1px solid var(--line); }
-      .step-image { display:block; width:100%; height:auto; background:#191b16; }
+      .timeline-list { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; align-items:start; }
+      .timeline-item { min-width:0; border:1px solid var(--line); background:var(--panel); overflow:hidden; }
+      .step-heading { min-height:68px; display:flex; align-items:center; padding:14px 16px; color:var(--lime); border-bottom:1px solid var(--line); font-size:10px; line-height:1.6; }
+      .step-image { display:block; width:100%; height:260px; object-fit:contain; background:#191b16; }
       footer { min-height:70px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; }
-      @media (max-width:700px) { .shell { width:calc(100% - 40px); } .topbar { height:70px; } .intro { padding:70px 0 58px; } .timeline { padding:40px 0 72px; } .step-heading { padding:17px; } }
+      @media (max-width:900px) { .timeline-list { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+      @media (max-width:700px) { .shell { width:calc(100% - 40px); } .topbar { height:70px; } .intro { padding:70px 0 58px; } .timeline { padding:40px 0 72px; } .timeline-list { grid-template-columns:1fr; gap:16px; } .step-heading { min-height:unset; padding:17px; } .step-image { height:240px; } }
     </style>
   </head>
   <body>
