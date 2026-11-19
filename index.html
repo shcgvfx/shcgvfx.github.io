@@ -32,16 +32,29 @@
       .hero-intro strong { color:var(--ink); font-weight:600; }
       .hero-note { display:flex; align-items:center; gap:10px; margin-top:28px; color:var(--muted); font:11px var(--mono); letter-spacing:.05em; }
       .pulse { width:7px; height:7px; border-radius:50%; background:var(--lime); box-shadow:0 0 14px #d5f36a66; }
-      .art { min-height:490px; position:relative; display:grid; place-items:center; overflow:hidden; }
-      .art::before { content:""; position:absolute; inset:7% 3%; border:1px solid #282b24; border-radius:50%; transform:rotate(-27deg) scaleY(.74); }
-      .art::after { content:""; position:absolute; width:1px; height:85%; background:linear-gradient(transparent,var(--line),transparent); transform:rotate(37deg); }
-      .rig-diagram { width:min(100%, 510px); position:relative; z-index:1; filter:drop-shadow(0 20px 65px #d5f36a12); }
-      .art-caption { position:absolute; right:4%; bottom:8%; font:10px var(--mono); letter-spacing:.15em; color:#777a70; }
-      .art-index { position:absolute; top:15%; right:5%; font:10px var(--mono); color:var(--lime); }
+      .hero-side { min-height:430px; position:relative; display:flex; flex-direction:column; justify-content:center; padding:48px; border:1px solid var(--line); background:linear-gradient(145deg,#191b16,#11120f 78%); }
+      .hero-side::before { content:""; position:absolute; inset:16px; border:1px solid #282b24; pointer-events:none; }
+      .hero-side-kicker, .hero-side-foot { position:relative; z-index:1; font:10px var(--mono); letter-spacing:.13em; color:var(--muted); text-transform:uppercase; }
+      .hero-side-kicker { color:var(--lime); margin:0 0 27px; }
+      .hero-side-title { position:relative; z-index:1; margin:0 0 38px; font-size:clamp(50px,7vw,92px); line-height:.82; letter-spacing:-.09em; font-weight:600; }
+      .hero-side-title span { display:block; color:var(--lime); }
+      .hero-side-foot { display:flex; justify-content:space-between; border-top:1px solid var(--line); padding-top:16px; }
       .focus { border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:37px 0 48px; }
       .section-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; }
       .section-head h2 { margin:0; font-size:12px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; }
       .section-head .label { color:var(--muted); }
+      .projects { padding:74px 0 82px; border-bottom:1px solid var(--line); }
+      .project-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+      .project-card { min-width:0; border:1px solid var(--line); background:var(--panel); }
+      .project-preview { aspect-ratio:1.35; position:relative; display:grid; place-items:center; background:#191b16; border-bottom:1px solid var(--line); }
+      .project-preview::before { content:""; position:absolute; inset:14px; border:1px dashed #3b3f32; }
+      .project-number { position:absolute; top:25px; left:26px; color:var(--lime); font:11px var(--mono); }
+      .project-plus { width:36px; height:36px; display:grid; place-items:center; border:1px solid #5f654a; border-radius:50%; color:var(--lime); font:22px var(--sans); }
+      .project-hint { position:absolute; bottom:24px; color:var(--muted); font:10px var(--mono); letter-spacing:.13em; }
+      .project-details { padding:20px 22px 23px; }
+      .project-details .label { display:block; margin:0 0 12px; color:var(--lime); font-size:10px; }
+      .project-details h3 { margin:0; font-size:18px; font-weight:500; letter-spacing:-.03em; }
+      .project-details p { margin:8px 0 0; color:var(--muted); font-size:13px; line-height:1.6; }
       .focus-grid { display:grid; grid-template-columns:repeat(3, 1fr); }
       .focus-item { padding:18px 26px 7px 0; border-right:1px solid var(--line); }
       .focus-item + .focus-item { padding-left:26px; }
@@ -63,8 +76,12 @@
         .hero-copy { padding:0; }
         h1 { font-size:clamp(74px, 18vw, 122px); }
         .hero-intro { font-size:14px; max-width:350px; margin-top:25px; }
-        .art { min-height:330px; margin-top:10px; }
-        .rig-diagram { max-width:370px; }
+        .hero-side { min-height:300px; margin-top:28px; padding:36px; }
+        .hero-side-title { font-size:clamp(54px,14vw,82px); }
+        .projects { padding:52px 0 58px; }
+        .project-grid { grid-template-columns:1fr; gap:14px; }
+        .project-preview { aspect-ratio:1.65; }
+        .project-details { padding:17px 18px 19px; }
         .focus { padding:30px 0 34px; }
         .focus-grid { grid-template-columns:1fr; }
         .focus-item, .focus-item + .focus-item { border-right:0; border-bottom:1px solid var(--line); padding:19px 0; display:grid; grid-template-columns:42px 1fr; column-gap:12px; }
@@ -82,7 +99,7 @@
     <div class="shell">
       <header class="topbar">
         <a class="brand" href="#top" aria-label="SHVFX home"><span class="brand-mark">S</span><span>SHVFX</span></a>
-        <div class="top-meta"><span>RIGGING PORTFOLIO</span><span>IN PROGRESS</span></div>
+        <div class="top-meta"><a href="#projects">PROJECTS ↓</a><span>IN PROGRESS</span></div>
       </header>
 
       <main id="top">
@@ -93,35 +110,29 @@
             <p class="hero-intro">A new beginning in <strong>character rigging</strong>.<br />Building a foundation in Autodesk Maya, one joint at a time.</p>
             <div class="hero-note"><span class="pulse" aria-hidden="true"></span>LEARNING · BUILDING · REFINING</div>
           </div>
-          <div class="art" aria-label="Abstract character rig diagram">
-            <span class="art-index">FIG. 01 / STUDY</span>
-            <svg class="rig-diagram" viewBox="0 0 500 520" role="img" aria-label="Abstract line drawing of a rigged figure">
-              <defs>
-                <linearGradient id="bone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d5f36a"/><stop offset="1" stop-color="#858f55"/></linearGradient>
-                <radialGradient id="joint"><stop stop-color="#f1f0e9"/><stop offset=".45" stop-color="#d5f36a"/><stop offset="1" stop-color="#697044"/></radialGradient>
-              </defs>
-              <g fill="none" stroke="#515747" stroke-width="1" opacity=".55">
-                <path d="M250 51v419M91 261h318M135 108l230 302M367 108 137 410" stroke-dasharray="3 8"/>
-                <circle cx="250" cy="249" r="185"/><circle cx="250" cy="249" r="147" stroke-dasharray="2 9"/>
-              </g>
-              <g fill="none" stroke="url(#bone)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M250 91 250 177 250 245 250 315 250 397"/>
-                <path d="m250 184-79 31-50 66m129-97 78 30 48 69"/>
-                <path d="m250 311-62 68-14 83m76-83 65 68 16 83"/>
-                <path d="m250 97-29-16m29 16 29-16" stroke-width="2"/>
-                <path d="m117 272-13 21m13-21 18 7m236-7 13 21m-13-21-18 7" stroke-width="2"/>
-                <path d="m173 451-17 12m17-12 16 8m123-8-16 12m16-12 17 8" stroke-width="2"/>
-              </g>
-              <g fill="url(#joint)" stroke="#11120f" stroke-width="3">
-                <circle cx="250" cy="91" r="17"/><circle cx="250" cy="177" r="9"/><circle cx="250" cy="245" r="12"/><circle cx="250" cy="315" r="9"/><circle cx="250" cy="397" r="10"/>
-                <circle cx="171" cy="215" r="9"/><circle cx="121" cy="274" r="8"/><circle cx="329" cy="215" r="9"/><circle cx="376" cy="274" r="8"/>
-                <circle cx="188" cy="379" r="9"/><circle cx="174" cy="451" r="8"/><circle cx="315" cy="379" r="9"/><circle cx="331" cy="451" r="8"/>
-              </g>
-              <g fill="#d5f36a" font-family="DM Mono, monospace" font-size="9" letter-spacing="1.4">
-                <text x="278" y="94">ROOT</text><text x="272" y="249">SPINE</text><text x="394" y="279">IK / FK</text><text x="99" y="306">CTRL</text>
-              </g>
-            </svg>
-            <span class="art-caption">SKELETON / CONTROL / MOTION</span>
+          <div class="hero-side" aria-label="Maya rigging portfolio introduction">
+            <p class="hero-side-kicker">CHARACTER WORKFLOW</p>
+            <h2 class="hero-side-title">MAYA<span>RIGGING</span></h2>
+            <div class="hero-side-foot"><span>BUILD · TEST · REFINE</span><span>SHVFX / 01</span></div>
+          </div>
+        </section>
+
+        <section class="projects" id="projects" aria-labelledby="projects-title">
+          <div class="section-head"><h2 id="projects-title">Projects</h2><span class="label">Space for future work</span></div>
+          <!-- Duplicate a project-card to add more portfolio entries. Replace each placeholder with a project image, title, and description. -->
+          <div class="project-grid">
+            <article class="project-card">
+              <div class="project-preview"><span class="project-number">01</span><span class="project-plus" aria-hidden="true">+</span><span class="project-hint">ADD PROJECT IMAGE</span></div>
+              <div class="project-details"><span class="label">PROJECT 01</span><h3>Project title</h3><p>Short project description</p></div>
+            </article>
+            <article class="project-card">
+              <div class="project-preview"><span class="project-number">02</span><span class="project-plus" aria-hidden="true">+</span><span class="project-hint">ADD PROJECT IMAGE</span></div>
+              <div class="project-details"><span class="label">PROJECT 02</span><h3>Project title</h3><p>Short project description</p></div>
+            </article>
+            <article class="project-card">
+              <div class="project-preview"><span class="project-number">03</span><span class="project-plus" aria-hidden="true">+</span><span class="project-hint">ADD PROJECT IMAGE</span></div>
+              <div class="project-details"><span class="label">PROJECT 03</span><h3>Project title</h3><p>Short project description</p></div>
+            </article>
           </div>
         </section>
 
