@@ -46,6 +46,9 @@
       .projects { padding:74px 0 82px; border-bottom:1px solid var(--line); }
       .project-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
       .project-card { min-width:0; border:1px solid var(--line); background:var(--panel); }
+      .project-card-link { display:block; color:inherit; transition:border-color .2s ease, transform .2s ease; }
+      .project-card-link:hover { border-color:var(--lime); transform:translateY(-3px); }
+      .project-card-link:focus-visible { outline:2px solid var(--lime); outline-offset:4px; }
       .project-preview { aspect-ratio:1.35; position:relative; display:grid; place-items:center; background:#191b16; border-bottom:1px solid var(--line); }
       .project-preview::before { content:""; position:absolute; inset:14px; border:1px dashed #3b3f32; }
       .project-number { position:absolute; top:25px; left:26px; color:var(--lime); font:11px var(--mono); }
@@ -121,10 +124,10 @@
           <div class="section-head"><h2 id="projects-title">Projects</h2><span class="label">Space for future work</span></div>
           <!-- Duplicate a project-card to add more portfolio entries. Replace each placeholder with a project image, title, and description. -->
           <div class="project-grid">
-            <article class="project-card">
+            <a class="project-card project-card-link" href="project-01.html" aria-label="Open project 01 progress log">
               <div class="project-preview"><span class="project-number">01</span><span class="project-plus" aria-hidden="true">+</span><span class="project-hint">ADD PROJECT IMAGE</span></div>
-              <div class="project-details"><span class="label">PROJECT 01</span><h3>Project title</h3><p>Short project description</p></div>
-            </article>
+              <div class="project-details"><span class="label">PROJECT 01</span><h3>Progress log</h3><p>Open to see the project timeline</p></div>
+            </a>
             <article class="project-card">
               <div class="project-preview"><span class="project-number">02</span><span class="project-plus" aria-hidden="true">+</span><span class="project-hint">ADD PROJECT IMAGE</span></div>
               <div class="project-details"><span class="label">PROJECT 02</span><h3>Project title</h3><p>Short project description</p></div>
